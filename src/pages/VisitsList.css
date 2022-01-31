@@ -1,0 +1,32 @@
+
+.visit-item-card {
+    width: 390px;
+    padding: 12px 20px;
+    margin: 10px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    box-shadow: 7px 9px 20px 0px rgb(216 216 216 / 47%);
+    background-color: rgba(0, 255, 21, 0.089);
+  }
+  
+
+  
+  .update-btn-container {
+    margin: 10px 0;
+    width: 120px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .update-btn-container > button {
+    background-color: #1d408d88;
+    width: 120px;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+  }
