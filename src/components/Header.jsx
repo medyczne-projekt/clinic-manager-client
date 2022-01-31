@@ -7,7 +7,9 @@ export default function Header() {
   const logout = () => {
     Cookies.remove("user");
     Cookies.remove("token");
+    //Cookies.remove("id");
   };
+  const isPatient = Cookies.get("user") === "PATIENT";
   return (
     <>
       <nav className="navbar">
@@ -16,7 +18,7 @@ export default function Header() {
             <div style={{ margin: "10px" }}> Trześniak's Clinic</div>
           </div>
         </div>
-        <div className="navbar-logo">PACJENT</div>
+        <div className="navbar-logo">{isPatient ? "PACJENT" : "DOKTOR"}</div>
         <div className="logoutlink">
           <Link to="/">
             <button

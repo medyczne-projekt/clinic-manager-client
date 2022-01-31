@@ -12,9 +12,9 @@ export default function Sidebar(props) {
         <div className="sidebar-container">
           <div>
             <ul className="sidebar-items-container">
-              <div className="sidebar-link">zalogowano jako:</div>
+              <div className="sidebar-link">ZALOGOWANO JAKO:</div>
               <div className="sidebar-link" style={{ fontSize: 50 }}>
-                {props.userName}
+                {props.userName.toUpperCase()}
               </div>
               {Cookies.get("user") === "PATIENT" ? (
                 <>

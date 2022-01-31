@@ -18,7 +18,8 @@ import ProtectedDoctorRoute from "./components/ProtectedDoctorRoute";
 class App extends React.Component {
 
   constructor(props) {
-    super(props);           
+    super(props);  
+    this.state = { userName: "", token: ""}        
     this.state = JSON.parse(localStorage.getItem('state'))
 
     const orginial = this.setState;     
@@ -29,7 +30,6 @@ class App extends React.Component {
     }
   }
 
-  state = { userName: "", token: ""} 
   setUserName = (newName) =>{
     this.setState({userName: newName})
   }
