@@ -6,7 +6,7 @@ export default function AddReceipt() {
   const [patientId, setPatienId] = useState("");
   const [day, setDay] = useState();
   const [text, setText] = useState();
-  const [formStatus, setFormstatus] = useState("");
+  const [formStatus, setFormstatus] = useState(2);
   useEffect(() => {
     fetch("https://umcs-clinic-manager.herokuapp.com/api/users", {
       method: "GET",
@@ -56,8 +56,8 @@ export default function AddReceipt() {
           .catch((err) => {});
          
 
-      setFormstatus("Wypisano receptę");
-    } else setFormstatus("Musisz wypełnić wszystkie pola");
+      setFormstatus(1);
+    } else setFormstatus(0);
   };
 
   return (
@@ -97,6 +97,7 @@ export default function AddReceipt() {
                     <label>Podaj date ważności recepty</label>
                     <input
                       type="date"
+                       min = {new Date(Date.now()).toISOString().slice(0, 10)}
                       onChange={(e) => {
                         setDay(e.target.value);
                       }}
@@ -124,7 +125,7 @@ export default function AddReceipt() {
               </div>
             </div>
           </div>
-          <center className="loginstatus"> {formStatus} </center>
+         {(formStatus === 1) ? <center style={{color:"green"}}>Wypisano receptę</center> : (formStatus === 0) ? <center style={{color:"red"}}>Musisz wypełnić wszystkie pola</center> : "" }
         </div>
       </div>
     </>

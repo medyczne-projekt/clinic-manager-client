@@ -100,6 +100,7 @@ export default function MakeVisit(props) {
                       <label>Wybierz dzień</label>
                       <input
                         type="date"
+                        min = {new Date(Date.now()).toISOString().slice(0, 10)}
                         onChange={(e) => {
                           setDay(e.target.value);
                         }}

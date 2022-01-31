@@ -13,11 +13,9 @@
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
   border: 3px solid #a093e6;
-  
 }
 .loginbtn {
   float: right;
-
 }
 .username {
   margin-top: 30px;
