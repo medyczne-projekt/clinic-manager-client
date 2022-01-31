@@ -11,8 +11,6 @@ export default function MakeVisit(props) {
   const [text, setText] = useState();
   const [loginStatus, setLoginStatus] = useState("");
 
-  const { history } = props;
-
   useEffect(() => {
     fetch("https://umcs-clinic-manager.herokuapp.com/api/users", {
       method: "GET",
@@ -74,10 +72,9 @@ export default function MakeVisit(props) {
                       onChange={(e) => {
                         setdoctorId(e.target.value);
                         for (let i = 8; i <= 18; i++) {
-                          hoursTMP.push(i + ":" + "00");
-                          hoursTMP.push(i + ":" + "30");
+                          hoursTMP.push(i.toISOString() + ":00");
+                          hoursTMP.push(i.toISOString() + ":30");
                         }
-                        hoursTMP.push("21" + ":" + "37")
                         setHours(hoursTMP);
                       }}
                     >

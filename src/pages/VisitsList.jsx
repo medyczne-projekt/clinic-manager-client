@@ -98,7 +98,7 @@ export default function VisitsList() {
           <div className="header-container">
             <h1>Moje wizyty</h1>
           </div>
-          <div className="receipt-conteiner">
+          <div className="receipt-container">
             {visitsList.map((item, index) => (
               <Visit
                 startDate={item.startDate}

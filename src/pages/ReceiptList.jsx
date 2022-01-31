@@ -110,7 +110,7 @@ export default function ReceiptList(props) {
           <div className="header-container">
             <h1>Moje recepty</h1>
           </div>
-          <div className="receipt-conteiner">
+          <div className="receipt-container">
             {receiptList.map((item, index) => (
               <Receipt
                 receiptCode={item.receiptCode}

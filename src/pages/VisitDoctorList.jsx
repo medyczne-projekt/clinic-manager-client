@@ -42,7 +42,7 @@ class Visit extends React.Component {
   render() {
     const date = this.props.startDate.split("T");
     return (
-      <div className="result-item" style={{ backgorund: "green" }}>
+      <div className="result-item" style={{ backgorund: "green" }} key = {""}>
         <div className="visit-item-card">
           <div className="header-container">Data wizyty:</div>
           <div className="date-container">{date[0]}</div>
@@ -111,6 +111,7 @@ function VisitDoctorList() {
             {console.log(visitsList)}
             {visitsList.map((item, index) => (
               <Visit
+                key = {index}
                 startDate={item.startDate}
                 receiptValidTo={item.receiptValidTo}
                 receiptDescription={item.receiptDescription}

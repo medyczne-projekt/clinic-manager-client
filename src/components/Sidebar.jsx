@@ -3,9 +3,6 @@ import { Link } from "react-router-dom";
 import "./Sidebar.css";
 import Cookies from "js-cookie";
 export default function Sidebar(props) {
-  const logout = () => {
-    Cookies.remove("user");
-  };
   return (
     <>
       <div className="sidebar">
