@@ -95,7 +95,7 @@ function VisitDoctorList() {
         console.log(data);
       })
       .catch((err) => {
-        console.error(err);
+        window.location.reload()
       });
   }, []);
 
@@ -107,7 +107,7 @@ function VisitDoctorList() {
           <div className="header-container">
             <h1>Harmonogram wizyt</h1>
           </div>
-          <div className="receipt-conteiner">
+          <div className="receipt-container">
             {console.log(visitsList)}
             {visitsList.map((item, index) => (
               <Visit
