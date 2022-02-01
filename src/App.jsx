@@ -19,8 +19,9 @@ class App extends React.Component {
 
   constructor(props) {
     super(props);  
-    this.state = { userName: "", token: ""}        
-    this.state = JSON.parse(localStorage.getItem('state'))
+    this.initialState = { userName: "", token: ""}        
+    this.state = JSON.parse(localStorage.getItem('state')) ? JSON.parse(localStorage.getItem('state'))
+    : this.initialState
 
     const orginial = this.setState;     
     this.setState = function() {
