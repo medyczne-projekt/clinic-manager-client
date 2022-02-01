@@ -124,7 +124,6 @@ function Register(props) {
             />
           </div>
         </div>
-
         <div className="gridRow">
           <div className="Register">
             <label>
@@ -194,7 +193,7 @@ function Register(props) {
             <TextField
               variant="outlined"
               fullWidth={true}
-              type="street"
+              type="text"
               onChange={(e) => {setStreet(e.target.value)}}
             />
           </div>
