@@ -5,53 +5,43 @@ import "./SignIn.css";
 import { withRouter } from "react-router-dom";
 import Cookies from "js-cookie";
 import jwt from "jwt-decode";
+import { set } from "js-cookie";
 
 function Register(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [loginStatus, setLoginStatus] = useState("");
+  const [password2, setPassword2] = useState("");
+  const [email, setEmail] = useState("");
+  const [firstname, setFirstname] = useState("");
+
+  const [lastname, setLastname] = useState("");
+  const [country, setCountry] = useState("");
+  const [sex, setSex] = useState("");
+  const [date, setDate] = useState("");
+
+  const [postalcode, setPostalcode] = useState("");
+  const [city, setCity] = useState("");
+  const [street, setStreet] = useState("");
+  const [passwordStatus, setPasswordStatus] = useState(true);
+ 
+  const [register, registerUser] = useState("");
+  const reg = () => {
+    if (password != password2)
+    {
+      setPasswordStatus(false);
+    }else
+    {
+      setPasswordStatus(true);
+    }
+  }
+
   const { history } = props;
 
-  const Login = () => {
-    const params = new URLSearchParams({
-      username: username,
-      password: password,
-    });
-    fetch("https://umcs-clinic-manager.herokuapp.com/api/login?=", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: params,
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        const user = jwt(data.access_token);
-        Cookies.set("user", user.roles[0]);
-        console.log(Cookies.get("user"));
-        console.log(data.access_token);
-        if (Cookies.get("user") === "DOCTOR") {
-          history.push("/VisitDoctorList");
-        } else {
-          history.push("/MakeVisit");
-        }
-
-        Cookies.set("token", data.access_token);
-        props.setUserName(username);
-        console.log(user);
-        Cookies.set("id", user.userId);
-      })
-      .catch((err) => {
-        console.error(err);
-        setLoginStatus("ups coś poszło nie tak");
-      });
-  };
-
-  return (
+  return ( 
     <div className="SignIn">
       <div className="items">
         <h1 className="headerlogin">
-          <center>Rejestracja </center>
+          <center>Rejestracja</center>
         </h1>
 
         <div className="gridRow">
@@ -63,7 +53,7 @@ function Register(props) {
               variant="outlined"
               fullWidth={true}
               type="username"
-              onChange={(e) => {}}
+              onChange={(e) => {setUsername(e.target.value)}}
             />
           </div>
           <div className="Register">
@@ -74,7 +64,7 @@ function Register(props) {
               variant="outlined"
               fullWidth={true}
               type="email"
-              onChange={(e) => {}}
+              onChange={(e) => {setEmail(e.target.value)}}
             />
           </div>
         </div>
@@ -88,7 +78,7 @@ function Register(props) {
               variant="outlined"
               fullWidth={true}
               type="firstname"
-              onChange={(e) => {}}
+              onChange={(e) => {setFirstname(e.target.value)}}
             />
           </div>
           <div className="Register">
@@ -99,7 +89,7 @@ function Register(props) {
               variant="outlined"
               fullWidth={true}
               type="lastname"
-              onChange={(e) => {}}
+              onChange={(e) => {setLastname(e.target.value)}}
             />
           </div>
         </div>
@@ -113,7 +103,7 @@ function Register(props) {
               variant="outlined"
               fullWidth={true}
               type="country"
-              onChange={(e) => {}}
+              onChange={(e) => {setCountry(e.target.value)}}
             />
           </div>
           <div className="Register">
@@ -124,7 +114,7 @@ function Register(props) {
               variant="outlined"
               fullWidth={true}
               type="sex"
-              onChange={(e) => {}}
+              onChange={(e) => {setSex(e.target.value)}}
             />
           </div>
         </div>
@@ -138,7 +128,7 @@ function Register(props) {
               variant="outlined"
               fullWidth={true}
               type="date"
-              onChange={(e) => {}}
+              onChange={(e) => {setDate(e.target.value)}}
             />
           </div>
           <div className="Register">
@@ -149,7 +139,7 @@ function Register(props) {
               variant="outlined"
               fullWidth={true}
               type="postalcode"
-              onChange={(e) => {}}
+              onChange={(e) => {setPostalcode(e.target.value)}}
             />
           </div>
         </div>
@@ -163,7 +153,7 @@ function Register(props) {
               variant="outlined"
               fullWidth={true}
               type="city"
-              onChange={(e) => {}}
+              onChange={(e) => {setCity(e.target.value)}}
             />
           </div>
           <div className="Register">
@@ -174,7 +164,7 @@ function Register(props) {
               variant="outlined"
               fullWidth={true}
               type="street"
-              onChange={(e) => {}}
+              onChange={(e) => {setStreet(e.target.value)}}
             />
           </div>
         </div>
@@ -188,7 +178,7 @@ function Register(props) {
               variant="outlined"
               fullWidth={true}
               type="password"
-              onChange={(e) => {}}
+              onChange={(e) => {setPassword(e.target.value)}}
             />
           </div>
           <div className="Register">
@@ -199,7 +189,7 @@ function Register(props) {
               variant="outlined"
               fullWidth={true}
               type="password"
-              onChange={(e) => {}}
+              onChange={(e) => {setPassword2(e.target.value)}}
             />
           </div>
         </div>
@@ -212,13 +202,12 @@ function Register(props) {
             size="large"
             color="primary"
             id="submit"
-            onClick={() => {
-              Login();
-            }}
+            onClick={reg}
           >
             ZAREJESTRUJ SIĘ
           </Button>
         </div>
+        {(!passwordStatus) ? <center style={{color:"red"}}>Hasła nie są identyczne</center> : "" }
       </div>
     </div>
   );

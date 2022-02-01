@@ -9,7 +9,7 @@ export default function MakeVisit(props) {
   const [hour, setHour] = useState([]);
   const [day, setDay] = useState();
   const [text, setText] = useState();
-  const [loginStatus, setLoginStatus] = useState("");
+  const [loginStatus, setLoginStatus] = useState(2);
 
   useEffect(() => {
     fetch("https://umcs-clinic-manager.herokuapp.com/api/users", {
@@ -45,8 +45,8 @@ export default function MakeVisit(props) {
     })
     .then((response) => response.json())
     .then((data) => {if (data.error){
-      setLoginStatus("ups coś poszło nie tak");}
-      else setLoginStatus("Wizyte umówiono")
+      setLoginStatus(0);}
+      else setLoginStatus(1)
       })
     .catch((err) => {
 
@@ -72,8 +72,8 @@ export default function MakeVisit(props) {
                       onChange={(e) => {
                         setdoctorId(e.target.value);
                         for (let i = 8; i <= 18; i++) {
-                          hoursTMP.push(i.toISOString() + ":00");
-                          hoursTMP.push(i.toISOString() + ":30");
+                          hoursTMP.push(i + ":00");
+                          hoursTMP.push(i + ":30");
                         }
                         setHours(hoursTMP);
                       }}
@@ -140,7 +140,7 @@ export default function MakeVisit(props) {
                   Umów
                 </button>
               </div>
-              <center className="loginstatus"> {loginStatus} </center>
+              {(loginStatus === 1) ? <center style={{color:"green"}}>Umówiono wizytę</center> : (loginStatus === 0) ? <center style={{color:"red"}}>Nie udało się umówić wizyty</center> : "" }
             </div>
           </div>
         </div>
