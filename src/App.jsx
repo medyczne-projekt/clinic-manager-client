@@ -41,7 +41,7 @@ class App extends React.Component {
           <Router>
             <Header/>
             <div className="inner-content">
-              <Sidebar userName={this.state.userName ? this.state.userName : "" }/>
+              <Sidebar userName={this.state.userName === null ? "" : this.state.userName }/>
               <Switch>
                 <Route path="/" exact component={() => <SignIn setUserName={this.setUserName}> </SignIn> } />
                 <Route path="/Register" exact component={() => <Register > </Register> } />
