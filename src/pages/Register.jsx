@@ -27,12 +27,41 @@ function Register(props) {
  
   const [register, registerUser] = useState("");
   const reg = () => {
-    if (password != password2)
+    if (password !== password2)
     {
       setPasswordStatus(false);
     }else
     {
-      setPasswordStatus(true);
+      setPasswordStatus(true);      
+      fetch("https://umcs-clinic-manager.herokuapp.com/api/user/add", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          user_username: username ,
+          user_password: password,
+          user_role: "PATIENT",
+          user_userDetails: {
+            user_firstName: firstname,
+            user_lastName: lastname,
+            user_gender: sex,
+            user_email: email,
+            user_country: country,
+            user_city: city,
+            user_street: street,
+            user_postal_code: postalcode,
+            user_dateOfBirth: date + "T00:00:00Z"
+          }
+        }),
+      })
+        .then((response) => {
+          console.log(response.json())
+        })
+        .then((data) => {
+          console.log(data)
+        })
+        .catch((err) => {});
     }
   }
 
@@ -202,8 +231,7 @@ function Register(props) {
             variant="contained"
             size="large"
             color="primary"
-            id="submit"
-            onClick={reg}
+            onClick={() => reg()}
           >
             ZAREJESTRUJ SIĘ
           </Button>

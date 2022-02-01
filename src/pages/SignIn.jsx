@@ -18,6 +18,7 @@ function SignIn(props) {
       username: username,
       password: password,
     });
+    console.log(params)
     fetch("https://umcs-clinic-manager.herokuapp.com/api/login?=", {
       method: "POST",
       headers: {
