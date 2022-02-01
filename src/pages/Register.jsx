@@ -6,6 +6,7 @@ import { withRouter } from "react-router-dom";
 import Cookies from "js-cookie";
 import jwt from "jwt-decode";
 import { set } from "js-cookie";
+import { Link } from "react-router-dom";
 
 function Register(props) {
   const [username, setUsername] = useState("");
@@ -207,6 +208,10 @@ function Register(props) {
             ZAREJESTRUJ SIĘ
           </Button>
         </div>
+        <Link to="/">
+            <h4>WRÓĆ DO LOGOWANIA</h4>
+        </Link>
+
         {(!passwordStatus) ? <center style={{color:"red"}}>Hasła nie są identyczne</center> : "" }
       </div>
     </div>

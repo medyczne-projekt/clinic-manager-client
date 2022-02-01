@@ -101,7 +101,7 @@ function SignIn(props) {
           </Button>
         </div>
         <Link to="/Register">
-            <h4>zarejestruj się</h4>
+            <h4>ZAREJESTRUJ SIĘ</h4>
         </Link>
         
 
