@@ -25,7 +25,7 @@ function Register(props) {
   const [street, setStreet] = useState("");
   const [passwordStatus, setPasswordStatus] = useState(true);
  
-  const [register, registerUser] = useState("");
+  const [registerStatus, setRegisterStatus] = useState();
   const reg = () => {
     if (password !== password2)
     {
@@ -60,6 +60,7 @@ function Register(props) {
         })
         .then((data) => {
           console.log(data)
+          history.push("/");
         })
         .catch((err) => {});
     }
